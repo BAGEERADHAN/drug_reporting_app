@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:date_field/date_field.dart';
+import 'package:checkmark/checkmark.dart';
 
 void main() => runApp(const MyApp());
 
@@ -38,7 +39,10 @@ class _FormreState extends State<Formre> {
         children: [
           Container(
               child: Image(
-            image: AssetImage("images/Forge.png"),
+            image: AssetImage(
+              "images/Forge.png",
+            ),
+            fit: BoxFit.fill,
           )),
           Center(
             child: Container(
