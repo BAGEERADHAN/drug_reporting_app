@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
                   // Update the state of the app
                   // ...
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => next()));
+                      context, MaterialPageRoute(builder: (context) => Next()));
                 },
               ),
               ListTile(
@@ -316,7 +316,7 @@ class _FormreState extends State<Formre> {
                       GestureDetector(
                         onTap: () async {
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => next()));
+                              MaterialPageRoute(builder: (context) => Next()));
                         },
                         child: Container(
                           height: 40,

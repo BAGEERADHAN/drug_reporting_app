@@ -1,13 +1,33 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-class next extends StatefulWidget {
-  const next({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+
+class Next extends StatefulWidget {
+  const Next({Key? key}) : super(key: key);
 
   @override
-  _nextState createState() => _nextState();
+  _NextState createState() => _NextState();
 }
 
-class _nextState extends State<next> {
+class _NextState extends State<Next> {
+  final url1 = "https://flask-spam-filter.herokuapp.com/spam_filter?string=";
+  final _tc1 = TextEditingController();
+  var _postjson = [];
+  String a = '';
+  void fetchPost(String url) async {
+    try {
+      final response = await http.get(Uri.parse(url));
+
+      final jsonData = jsonDecode(response.body) as List;
+      setState(() {
+        _postjson = jsonData;
+      });
+      print(response.body);
+    } catch (err) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,6 +111,7 @@ class _nextState extends State<next> {
                       height: 5,
                     ),
                     TextFormField(
+                      controller: _tc1,
                       maxLines: 5,
                       style: TextStyle(color: Colors.black),
                       decoration: InputDecoration(
@@ -122,7 +143,9 @@ class _nextState extends State<next> {
                         return null;
                       },
                       onChanged: (val) {
-                        setState(() {});
+                        setState(() {
+                          a = val;
+                        });
                       },
                     ),
                     SizedBox(
@@ -130,7 +153,11 @@ class _nextState extends State<next> {
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () async {},
+                      onTap: () async {
+                        String url2;
+                        print(url1 + a);
+                        fetchPost(url1 + a);
+                      },
                       child: Container(
                         height: 40,
                         width: 300,
