@@ -1,6 +1,8 @@
+import 'package:drug_reporting_app/frontpage.dart';
 import 'package:flutter/material.dart';
 import 'package:date_field/date_field.dart';
 import 'package:checkmark/checkmark.dart';
+import 'form1.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,12 +11,48 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Form Validation Demo';
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Formre(),
+        drawer: Drawer(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text('Drawer Header'),
+              ),
+              ListTile(
+                title: const Text('Item 1'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => next()));
+                },
+              ),
+              ListTile(
+                title: const Text('Item 2'),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                },
+              ),
+            ],
+          ),
+        ),
+        body: Front(),
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color.fromARGB(255, 49, 85, 179),
+          ),
+          backgroundColor: Color.fromRGBO(243, 244, 246, 1),
+          title: Text(''),
+          shadowColor: Color.fromARGB(0, 105, 61, 61),
+        ),
       ),
     );
   }
@@ -38,12 +76,13 @@ class _FormreState extends State<Formre> {
       body: Stack(
         children: [
           Container(
+              height: MediaQuery.of(context).size.height,
               child: Image(
-            image: AssetImage(
-              "images/Forge.png",
-            ),
-            fit: BoxFit.fill,
-          )),
+                image: AssetImage(
+                  "images/f2.png",
+                ),
+                fit: BoxFit.fitWidth,
+              )),
           Center(
             child: Container(
               decoration: BoxDecoration(
@@ -61,7 +100,7 @@ class _FormreState extends State<Formre> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          'Drug Reporting ',
+                          'PREKSHA ',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 28,
@@ -119,7 +158,7 @@ class _FormreState extends State<Formre> {
                             });
                           }),
                       SizedBox(
-                        height: 25,
+                        height: 20,
                       ),
                       Container(
                         width: 400,
@@ -132,7 +171,6 @@ class _FormreState extends State<Formre> {
                         height: 5,
                       ),
                       TextFormField(
-                        controller: _tc1,
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                             fillColor: Colors.white,
@@ -169,12 +207,12 @@ class _FormreState extends State<Formre> {
                         },
                       ),
                       SizedBox(
-                        height: 25,
+                        height: 20,
                       ),
                       Container(
                         width: 400,
                         child: Text(
-                          'Description*',
+                          'Do you have any info regard suspect',
                           style: TextStyle(color: Colors.black, fontSize: 15),
                         ),
                       ),
@@ -182,8 +220,55 @@ class _FormreState extends State<Formre> {
                         height: 5,
                       ),
                       TextFormField(
-                        maxLines: 5,
-                        controller: _tc1,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            labelStyle: TextStyle(
+                              color: Colors.black,
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(254, 137, 58, 1),
+                                  width: 5,
+                                )),
+                            contentPadding: EdgeInsets.fromLTRB(15, 5, 5, 5),
+                            filled: true,
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                                borderSide: BorderSide(
+                                  color: Color.fromRGBO(115, 141, 208, 1),
+                                  width: 2,
+                                ))),
+                        validator: (val) {
+                          if (val == null || val.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                        onChanged: (val) {
+                          setState(() {
+                            print(_tc1);
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: 400,
+                        child: Text(
+                          'is there any vehicle involved',
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      TextFormField(
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                             fillColor: Colors.white,
@@ -229,7 +314,10 @@ class _FormreState extends State<Formre> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () async {},
+                        onTap: () async {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => next()));
+                        },
                         child: Container(
                           height: 40,
                           width: 300,
@@ -239,7 +327,7 @@ class _FormreState extends State<Formre> {
                           ),
                           child: Center(
                               child: Text(
-                            'Submit',
+                            'Next',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -248,33 +336,6 @@ class _FormreState extends State<Formre> {
                           )),
                         ),
                       ),
-                      SizedBox(height: 15),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '......',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        "",
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      )
                     ],
                   ),
                 ),
