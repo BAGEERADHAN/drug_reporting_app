@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:drug_reporting_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
+import 'faqs.dart';
 
 class Next extends StatefulWidget {
   const Next({Key? key}) : super(key: key);
@@ -32,25 +34,41 @@ class _NextState extends State<Next> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child: Column(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: Text(
-                  "Services",
-                  style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
+            SizedBox(
+              height: 15,
+            ),
+            Builder(
+              builder: (context) => Center(
+                child: RaisedButton(
+                  color: Color.fromRGBO(243, 244, 246, 1),
+                  elevation: 0,
+                  child: Text(
+                    "Services",
+                    style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
+                  ),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Formre())),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: Text(
-                  "FAQs",
-                  style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
+            SizedBox(
+              height: 15,
+            ),
+            Builder(
+              builder: (context) => Center(
+                child: RaisedButton(
+                  color: Color.fromRGBO(243, 244, 246, 1),
+                  elevation: 0,
+                  child: Text(
+                    "FAQs",
+                    style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
+                  ),
+                  onPressed: () => Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Faqs())),
                 ),
               ),
             ),

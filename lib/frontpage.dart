@@ -1,3 +1,4 @@
+import 'package:drug_reporting_app/login.dart';
 import 'package:drug_reporting_app/main.dart';
 import 'package:flutter/material.dart';
 
@@ -61,7 +62,7 @@ class _FrontState extends State<Front> {
                       height: 25,
                     ),
                     Container(
-                      height: 270,
+                      height: 250,
                       child: Image(
                         image: AssetImage("images/he.png"),
                       ),
@@ -93,7 +94,33 @@ class _FrontState extends State<Front> {
                       ),
                     ),
                     SizedBox(
-                      height: 25,
+                      height: 17,
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => login()));
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 49, 85, 179),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                            child: Text(
+                          'Admin Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Container(
                       width: 400,

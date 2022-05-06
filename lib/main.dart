@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:date_field/date_field.dart';
 import 'package:checkmark/checkmark.dart';
 import 'form1.dart';
+import 'faqs.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,36 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text('Drawer Header'),
-              ),
-              ListTile(
-                title: const Text('Item 1'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Next()));
-                },
-              ),
-              ListTile(
-                title: const Text('Item 2'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                },
-              ),
-            ],
-          ),
-        ),
         body: Front(),
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -73,6 +44,56 @@ class _FormreState extends State<Formre> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Builder(
+              builder: (context) => Center(
+                child: RaisedButton(
+                  color: Color.fromRGBO(243, 244, 246, 1),
+                  elevation: 0,
+                  child: Text(
+                    "Services",
+                    style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
+                  ),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Formre())),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Builder(
+              builder: (context) => Center(
+                child: RaisedButton(
+                  color: Color.fromRGBO(243, 244, 246, 1),
+                  elevation: 0,
+                  child: Text(
+                    "FAQs",
+                    style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
+                  ),
+                  onPressed: () => Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Faqs())),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Color.fromARGB(255, 49, 85, 179),
+        ),
+        backgroundColor: Color.fromRGBO(243, 244, 246, 1),
+        title: Text(''),
+        shadowColor: Color.fromARGB(0, 105, 61, 61),
+      ),
       body: Stack(
         children: [
           Container(
