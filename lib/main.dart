@@ -1,9 +1,8 @@
 import 'package:drug_reporting_app/frontpage.dart';
+import 'package:drug_reporting_app/login.dart';
 import 'package:flutter/material.dart';
 import 'package:date_field/date_field.dart';
 import 'package:checkmark/checkmark.dart';
-import 'form1.dart';
-import 'faqs.dart';
 
 void main() => runApp(const MyApp());
 
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Front(),
+        body: login(),
         appBar: AppBar(
           iconTheme: IconThemeData(
             color: Color.fromARGB(255, 49, 85, 179),
@@ -54,11 +53,11 @@ class _FormreState extends State<Formre> {
             ),
             Builder(
               builder: (context) => Center(
-                child: RaisedButton(
-                  color: Color.fromRGBO(243, 244, 246, 1),
+                child: FloatingActionButton(
+                  backgroundColor: Color.fromRGBO(243, 244, 246, 1),
                   elevation: 0,
                   child: Text(
-                    "Services",
+                    "Service",
                     style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
                   ),
                   onPressed: () => Navigator.push(context,
@@ -69,20 +68,20 @@ class _FormreState extends State<Formre> {
             SizedBox(
               height: 15,
             ),
-            Builder(
+           /* Builder(
               builder: (context) => Center(
-                child: RaisedButton(
-                  color: Color.fromRGBO(243, 244, 246, 1),
+                child:FloatingActionButton(
+                  backgroundColor: Color.fromRGBO(243, 244, 246, 1),
                   elevation: 0,
                   child: Text(
                     "FAQs",
                     style: TextStyle(color: Color.fromARGB(255, 49, 85, 179)),
                   ),
-                  onPressed: () => Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Faqs())),
+           //       onPressed: () => Navigator.push(
+              //        context, MaterialPageRoute(builder: (context) => Faqs())),
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       ),
@@ -336,8 +335,8 @@ class _FormreState extends State<Formre> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Next()));
+                         // Navigator.push(context,
+                           //   MaterialPageRoute(builder: (context) => Next()));
                         },
                         child: Container(
                           height: 40,

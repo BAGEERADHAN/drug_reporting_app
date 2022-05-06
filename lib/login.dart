@@ -164,14 +164,14 @@ class _loginState extends State<login> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          if (_t1 == 'Admin@admin' && _t2 == 'password') {
+                        //  if (_t1 == 'Admin@admin' && _t2 == 'password') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Admin()));
-                          } else {
+                        /*  } else {
                             is1 = true;
-                          }
+                          }*/
                         },
                         child: Container(
                           height: 40,
